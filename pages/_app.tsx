@@ -9,6 +9,7 @@ import { SocketProvider } from '../client/api/socket-provider';
 import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
 import { FP_LOAD_OPTIONS } from '../client/use-visitor-data';
 import { Paper, Stack } from '@mui/material';
+import Script from 'next/script';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -53,7 +54,15 @@ function App({ Component, pageProps }) {
                 <title>Fingerprint Pro Use Cases</title>
               </Head>
               {/* This is not related to any Fingerprint examples, just our internal placeholder for deployment purposes, please ignore */}
-              <div id="deployment-placeholder" />
+              {/* <div id="deployment-placeholder" /> */}
+              <Script
+                id="gtag-base"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-NZF3KXN');",
+                }}
+              />
               <Layout>
                 <Component {...pageProps} />
               </Layout>
